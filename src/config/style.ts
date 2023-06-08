@@ -1,14 +1,14 @@
 export default {
-  showFooter: true,
+  showFooter: false,
   isSidebarCompact: false,
   showBreadcrumb: false,
-  mode: 'light',
+  mode: 'auto',
   layout: 'side',
-  splitMenu: false,
+  splitMenu: true,
   isFooterAside: false,
   isSidebarFixed: true,
   isHeaderFixed: true,
   isUseTabsRouter: false,
   showHeader: true,
-  brandTheme: '#0052D9',
+  brandTheme: '#0594FA',
 };
