@@ -2,18 +2,18 @@
   <div class="detail-deploy">
     <t-row :gutter="12">
       <t-col :lg="6" :xs="12">
-        <t-card title="部署趋势" :bordered="false">
+        <t-card :bordered="false" title="部署趋势">
           <div class="deploy-panel-left">
             <div id="monitorContainer" style="width: 100%; height: 265px" />
           </div>
         </t-card>
       </t-col>
       <t-col :lg="6" :xs="12">
-        <t-card title="告警情况" :bordered="false">
+        <t-card :bordered="false" title="告警情况">
           <template #option>
             <t-radio-group default-value="dateVal" @change="onAlertChange">
-              <t-radio-button value="dateVal"> 本周 </t-radio-button>
-              <t-radio-button value="monthVal"> 本月 </t-radio-button>
+              <t-radio-button value="dateVal"> 本周</t-radio-button>
+              <t-radio-button value="monthVal"> 本月</t-radio-button>
             </t-radio-group>
           </template>
           <div id="dataContainer" style="width: 100%; height: 265px" />
@@ -22,15 +22,15 @@
     </t-row>
 
     <!-- 项目列表 -->
-    <t-card title="项目列表" class="container-base-margin-top" :bordered="false">
+    <t-card :bordered="false" class="container-base-margin-top" title="项目列表">
       <t-table
         :columns="columns"
         :data="data"
-        :pagination="pagination"
         :hover="hover"
+        :pagination="pagination"
         rowKey="index"
-        @sort-change="sortChange"
         @change="rehandleChange"
+        @sort-change="sortChange"
       >
         <template #op="slotProps">
           <a class="t-button-link" @click="listClick(slotProps)">管理</a>
@@ -39,7 +39,7 @@
         <order-descending-icon slot="op-column" />
       </t-table>
     </t-card>
-    <t-dialog header="基本信息" :visible.sync="visible" @confirm="onConfirm">
+    <t-dialog :visible.sync="visible" header="基本信息" @confirm="onConfirm">
       <div slot="body">
         <div class="dialog-info-block">
           <div v-for="(item, index) in baseInfoData" :key="index" class="info-item">
@@ -61,12 +61,12 @@
 import { TableSort } from 'tdesign-vue';
 import { OrderDescendingIcon } from 'tdesign-icons-vue';
 import * as echarts from 'echarts/core';
-import { TitleComponent, ToolboxComponent, TooltipComponent, GridComponent, LegendComponent } from 'echarts/components';
+import { GridComponent, LegendComponent, TitleComponent, ToolboxComponent, TooltipComponent } from 'echarts/components';
 import { BarChart, LineChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 import { mapState } from 'vuex';
 
-import { getSmoothLineDataSet, get2ColBarChartDataSet } from './index';
+import { get2ColBarChartDataSet, getSmoothLineDataSet } from './index';
 import model from '@/service/service-detail-deploy';
 
 echarts.use([

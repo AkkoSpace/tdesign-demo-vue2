@@ -1,6 +1,6 @@
 <template>
   <div class="detail-advanced">
-    <t-card title="基本信息" class="advanced-card" :bordered="false">
+    <t-card :bordered="false" class="advanced-card" title="基本信息">
       <div class="info-block">
         <div v-for="(item, index) in baseInfoData" :key="index" class="info-item">
           <h1>{{ item.name }}</h1>
@@ -18,21 +18,21 @@
     </t-card>
 
     <!-- 发票进度 -->
-    <t-card title="发票进度" class="container-base-margin-top" :bordered="false">
+    <t-card :bordered="false" class="container-base-margin-top" title="发票进度">
       <t-row :class="prefix + '-operator-row row-padding'" justify="space-between">
         <template>
           <t-steps :current="updateCurrent">
-            <t-step-item title="申请提交" content="已于12月21日提交"></t-step-item>
-            <t-step-item title="电子发票" content="预计1～3个工作日"></t-step-item>
-            <t-step-item title="发票已邮寄" content="电子发票开出后7个工作日内联系"></t-step-item>
-            <t-step-item title="完成" content></t-step-item>
+            <t-step-item content="已于12月21日提交" title="申请提交"></t-step-item>
+            <t-step-item content="预计1～3个工作日" title="电子发票"></t-step-item>
+            <t-step-item content="电子发票开出后7个工作日内联系" title="发票已邮寄"></t-step-item>
+            <t-step-item content title="完成"></t-step-item>
           </t-steps>
         </template>
       </t-row>
     </t-card>
 
     <!-- 产品目录 -->
-    <t-card title="产品目录" class="container-base-margin-top" :bordered="false">
+    <t-card :bordered="false" class="container-base-margin-top" title="产品目录">
       <template slot="option">
         <t-radio-group default-value="dateVal" @change="onAlertChange">
           <t-radio-button value="dateVal">季度</t-radio-button>
@@ -56,16 +56,16 @@
     </t-card>
 
     <!-- 产品采购明细 -->
-    <t-card title="产品采购明细" class="container-base-margin-top" :bordered="false">
+    <t-card :bordered="false" class="container-base-margin-top" title="产品采购明细">
       <t-table
         :columns="columns"
         :data="data"
-        :pagination="pagination"
         :hover="hover"
-        size="large"
+        :pagination="pagination"
         row-key="index"
-        @sort-change="sortChange"
+        size="large"
         @change="rehandleChange"
+        @sort-change="sortChange"
       >
         <template #pdName="{ row }">
           <span>
@@ -77,7 +77,7 @@
         <template #purchaseNum="{ row }">
           <span>
             {{ row.purchaseNum }}
-            <t-tag v-if="row.purchaseNum > 50" theme="danger" variant="light" size="small">超预算</t-tag>
+            <t-tag v-if="row.purchaseNum > 50" size="small" theme="danger" variant="light">超预算</t-tag>
           </span>
         </template>
 
@@ -89,7 +89,7 @@
       </t-table>
     </t-card>
 
-    <t-dialog header="基本信息" :visible.sync="visible" @confirm="onConfirm">
+    <t-dialog :visible.sync="visible" header="基本信息" @confirm="onConfirm">
       <div slot="body">
         <div class="dialog-info-block">
           <div v-for="(item, index) in baseInfoData" :key="index" class="info-item">
@@ -111,7 +111,7 @@
 </template>
 <script lang="ts">
 import { TableChangeContext, TableChangeData, TableSort } from 'tdesign-vue';
-import { OrderDescendingIcon, AddIcon } from 'tdesign-icons-vue';
+import { AddIcon, OrderDescendingIcon } from 'tdesign-icons-vue';
 import { prefix } from '@/config/global';
 import model from '@/service/service-advance';
 import Product from './components/Product.vue';

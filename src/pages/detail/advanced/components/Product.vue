@@ -8,7 +8,7 @@
           {{ data.subtitle }}
         </div>
         <div class="operator-title-tags">
-          <t-tag class="operator-title-tag" theme="success" size="small">
+          <t-tag class="operator-title-tag" size="small" theme="success">
             {{ data.size }}
           </t-tag>
           <t-tag class="operator-title-tag" size="small">
@@ -27,12 +27,12 @@
     <div class="operator-footer">
       <span class="operator-footer-percentage">{{ data.use }} / {{ data.stock }}（台）</span>
       <t-progress
+        :color="data.use / data.stock < 0.5 ? '#E24D59' : ''"
+        :label="false"
+        :percentage="(data.use / data.stock) * 100"
+        :track-color="data.use / data.stock < 0.5 ? 'var(--td-error-color-1)' : 'var(--td-brand-color-1)'"
         class="operator-progress"
         theme="line"
-        :percentage="(data.use / data.stock) * 100"
-        :label="false"
-        :color="data.use / data.stock < 0.5 ? '#E24D59' : ''"
-        :track-color="data.use / data.stock < 0.5 ? 'var(--td-error-color-1)' : 'var(--td-brand-color-1)'"
       />
     </div>
   </div>
@@ -40,7 +40,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { ChevronRightIcon, CartIcon } from 'tdesign-icons-vue';
+import { CartIcon, ChevronRightIcon } from 'tdesign-icons-vue';
 
 export default Vue.extend({
   components: {
