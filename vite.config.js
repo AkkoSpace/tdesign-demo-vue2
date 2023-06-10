@@ -49,7 +49,9 @@ export default ({ mode }) => {
         '/api': {
           // 用于开发环境下的转发请求
           // 更多请参考：https://vitejs.dev/config/#server-proxy
-          target: 'https://service-exndqyuk-1257786608.gz.apigw.tencentcs.com',
+          // 修改为自己的接口地址
+          // target: 'https://service-exndqyuk-1257786608.gz.apigw.tencentcs.com',
+          target: 'http://localhost:8101',
           changeOrigin: true,
         },
       },
